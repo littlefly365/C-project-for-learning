@@ -2,17 +2,17 @@
 #include <string.h>
 
 int main(void) {
-    char word[101];
-    printf("write a word, the limit are 100 letters: ");
-    fflush(stdout);
-    scanf("%s100", word);
-    int num = strlen(word);
-    int len = num - 1;
-    printf("\n");
-    while (fix >= 0) {
+   char word[101];
+   printf("write a word, the limit are 100 letters: ");
+   fflush(stdout);
+   scanf("%s100", word);
+   int num = strlen(word);
+   int len = num - 1;
+   printf("\n");
+   while (fix >= 0) {
      printf("%c", word[len]); 
      len--;
     }
-    return 0;
+   return 0;
 }
 
