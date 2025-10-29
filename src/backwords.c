@@ -3,7 +3,7 @@
 
 int main(void) {
     char word[101];
-    printf("write a word, the limit are 100 letters");
+    printf("write a word, the limit are 100 letters: ");
     fflush(stdout);
     scanf("%s100", word);
     int num = strlen(word);
