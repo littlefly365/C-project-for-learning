@@ -1,35 +1,45 @@
 #include <stdio.h>
 
-int main(void){
-    char numbers[4];
+int main(void) {
+    int numbers[3];
     int selection;
-    int n = 0, n2 = 1, n3 = 2;
 
-    printf("Type 3 numbers: ");
-    scanf("%3s", numbers);
+    printf("Type 3 numbers separated by spaces: ");
+    if (scanf("%d %d %d", &numbers[0], &numbers[1], &numbers[2]) != 3) {
+        printf("Invalid input\n");
+        return 1;
+    }
 
     printf("Do you want to order(1) or reverse(2)? ");
     scanf("%d", &selection);
 
     if (selection == 1) {
-        if (numbers[n] <= numbers[n2] && numbers[n2] <= numbers[n3]) {
-            printf("%c %c %c\n", numbers[n], numbers[n2], numbers[n3]);
-        } else if (numbers[n] <= numbers[n3] && numbers[n3] <= numbers[n2]) {
-            printf("%c %c %c\n", numbers[n], numbers[n3], numbers[n2]);
-        } else if (numbers[n2] <= numbers[n] && numbers[n] <= numbers[n3]) {
-            printf("%c %c %c\n", numbers[n2], numbers[n], numbers[n3]);
-        } else if (numbers[n2] <= numbers[n3] && numbers[n3] <= numbers[n]) {
-            printf("%c %c %c\n", numbers[n2], numbers[n3], numbers[n]);
-        } else if (numbers[n3] <= numbers[n] && numbers[n] <= numbers[n2]) {
-            printf("%c %c %c\n", numbers[n3], numbers[n], numbers[n2]);
-        } else {
-            printf("%c %c %c\n", numbers[n3], numbers[n2], numbers[n]);
+        // orden ascendente (burbuja simple)
+        for (int i = 0; i < 2; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                if (numbers[i] > numbers[j]) {
+                    int tmp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = tmp;
+                }
+            }
         }
     } else if (selection == 2) {
-        printf("%c %c %c\n", numbers[n3], numbers[n2], numbers[n]);
+        // orden descendente
+        for (int i = 0; i < 2; i++) {
+            for (int j = i + 1; j < 3; j++) {
+                if (numbers[i] < numbers[j]) {
+                    int tmp = numbers[i];
+                    numbers[i] = numbers[j];
+                    numbers[j] = tmp;
+                }
+            }
+        }
     } else {
         printf("Invalid selection\n");
+        return 1;
     }
 
+    printf("Result: %d %d %d\n", numbers[0], numbers[1], numbers[2]);
     return 0;
 }
