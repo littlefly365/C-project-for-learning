@@ -1,0 +1,23 @@
+name: Compilar proyecto C
+
+on:
+  push:
+    branches: [ main ]
+  workflow_dispatch:
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Descargar el código
+        uses: actions/checkout@v4
+
+      - name: Instalar herramientas de compilación
+        run: sudo apt update && sudo apt install -y build-essential
+
+      - name: Compilar con Make
+        run: make
+
+      - name: Ver archivos generados
+        run: ls -R
