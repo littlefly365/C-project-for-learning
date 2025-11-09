@@ -1,5 +1,5 @@
-CC = gcc
-CFLAGS = -Wall -Wextra -std=c11
+CC = musl-gcc
+CFLAGS = -Wall -Wextra -std=c11 -static
 SRC_DIR = src/simples
 BIN_DIR = bin
 SRC = $(wildcard $(SRC_DIR)/*.c)
